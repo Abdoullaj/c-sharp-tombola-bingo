@@ -5,8 +5,19 @@ using System.Collections;
 
 namespace Gioco
 {
-    class Tombola
+    class Tombola : GameFactory
     {
+
+        public Tombola()
+        {
+            Console.Write("Tombola creata");
+        }
         
+        public override void turnoGioco()
+        {
+            Console.Write("Turno Tombola");
+        }
+
+
     }
 }

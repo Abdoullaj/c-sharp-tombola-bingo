@@ -4,7 +4,15 @@ using System.Text;
 
 namespace Gioco
 {
-    class Bingo
+    class Bingo : GameFactory
     {
+        public Bingo()
+        {
+            Console.Write("Bingo creato");
+        }
+
+        public override void turnoGioco() {
+            Console.Write("Turno bingo");
+        }
     }
 }

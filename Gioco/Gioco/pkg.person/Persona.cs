@@ -19,6 +19,7 @@ namespace Gioco
 
         public void CompraCartella(char gioco)
         {
+            Console.WriteLine("user"+user+"buying cartella");
             Cartella c = new Cartella(gioco);
             cartelle.Add(c);
             costoComplessivoCartelle += c.GetCosto();

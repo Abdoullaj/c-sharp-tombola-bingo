@@ -43,9 +43,10 @@ namespace Gioco
                     int number = est.Estrazione();
                     cartella[i, j] = number;
                     Console.WriteLine(cartella[i, j]);
-                    Console.ReadKey();
+                    
                 }
             }
+            Console.ReadKey();
         }
 
         public double GetCosto()

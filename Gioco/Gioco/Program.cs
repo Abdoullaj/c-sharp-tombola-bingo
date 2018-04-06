@@ -6,7 +6,8 @@ namespace Gioco
     {
         static void Main(string[] args)
         {
-            Cartella c = new Cartella('t');
+            Persona pippo = new Persona("pippo");
+            
         }
     }
 }
