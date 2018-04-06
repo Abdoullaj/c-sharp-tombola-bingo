@@ -10,20 +10,41 @@ namespace Gioco
     {
         private EstrazioneNumeroRandom est = new EstrazioneNumeroRandom();
         string state;
-        private ArrayList nEstratti, giocatori;
+        private List <int>nEstratti;
+        private List<Persona> giocatori;
 
         public GameFactory()
         {
-            nEstratti = new ArrayList();
-            giocatori = new ArrayList();
+            nEstratti = new List<int>();
+            giocatori = new List<Persona>();
         }
 
-        public void estraiNumeri()
+        public void EstraiNumeri()
         {
            
         }
 
-        abstract public void turnoGioco();
+        public List <Persona> GetPersone()
+        {
+            return giocatori;
+        }
+
+        public List <int> GetNEstratti()
+        {
+            return nEstratti;
+        }
+
+        public string GetState()
+        {
+            return state;
+        }
+
+        public EstrazioneNumeroRandom GetRandomGenerator()
+        {
+            return est;
+        }
+
+        abstract public void TurnoGioco();
 
         public void AggiungiGiocatori(Persona p)
         {

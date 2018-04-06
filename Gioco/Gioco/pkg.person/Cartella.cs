@@ -53,10 +53,10 @@ namespace Gioco
         {
             return costo;
         }
-
-        public Cartella GetCartella()
+        
+        public int [,] GetCartella()
         {
-            return this;
+            return cartella;
         }
     }
 }

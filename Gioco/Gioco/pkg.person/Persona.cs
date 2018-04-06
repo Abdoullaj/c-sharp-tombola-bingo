@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
+
 
 namespace Gioco
 {
     class Persona
     {
         private String user;
-        private ArrayList cartelle;
+        private List <Cartella>cartelle;
         private double costoComplessivoCartelle;
 
         public Persona(String us)
         {
             this.user = us;
-            cartelle = new ArrayList();
+            cartelle = new List<Cartella>();
             costoComplessivoCartelle = 0;
         }
 
@@ -30,7 +32,7 @@ namespace Gioco
             return user;
         }
 
-        public ArrayList GetCartelle()
+        public List <Cartella>GetCartelle()
         {
             return cartelle;
         }
