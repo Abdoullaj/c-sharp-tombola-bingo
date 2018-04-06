@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Gioco
 {
-    abstract class EstrazioneNumeroRandom
+    class EstrazioneNumeroRandom
     {
         private ArrayList nEstratti;
         private Random rnd= new Random();
@@ -17,14 +17,16 @@ namespace Gioco
 
         public int Estrazione()
         {
-            int estratto = rnd.Next(1,100);
+            int estratto = rnd.Next(1,99);
             if (nEstratti.Contains(estratto))
             {
+                
                 return Estrazione();
             }
             else
             {
                 nEstratti.Add(estratto);
+
                 return estratto;
             }
         }

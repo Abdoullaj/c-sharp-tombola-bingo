@@ -6,7 +6,7 @@ namespace Gioco
     {
         static void Main(string[] args)
         {
-            
+            Cartella c = new Cartella('t');
         }
     }
 }
