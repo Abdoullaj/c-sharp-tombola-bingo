@@ -8,19 +8,36 @@ namespace Gioco
     {
         private String user;
         private ArrayList cartelle;
-
+        private double costoComplessivoCartelle;
 
         public Persona(String us)
         {
             this.user = us;
             cartelle = new ArrayList();
+            costoComplessivoCartelle = 0;
         }
 
         public void CompraCartella(char gioco)
         {
-            cartelle.Add(new Cartella(gioco));
+            Cartella c = new Cartella(gioco);
+            cartelle.Add(c);
+            costoComplessivoCartelle += c.GetCosto();
+        }
+        
+        public String GetUser()
+        {
+            return user;
         }
 
+        public ArrayList GetCartelle()
+        {
+            return cartelle;
+        }
+
+        public double GetCostoTotale()
+        {
+            return costoComplessivoCartelle;
+        }
 
     }
 }

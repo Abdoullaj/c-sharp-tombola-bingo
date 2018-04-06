@@ -11,11 +11,28 @@ namespace Gioco
 
         public Cartella(char type)
         {
-            if (type == 'b')
+            if (type == 't')
             {
                 cartella = new int[3,5];
                 costo = 0.5;
             }
+            else
+            {
+
+                cartella = new int[3, 10];
+                costo = 1;
+            
+            }
+        }
+
+        public double GetCosto()
+        {
+            return costo;
+        }
+
+        public Cartella GetCartella()
+        {
+            return this;
         }
     }
 }
