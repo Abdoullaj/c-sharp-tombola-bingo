@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gioco
 {
-    class Class1
+    class Tombola
     {
     }
 }
