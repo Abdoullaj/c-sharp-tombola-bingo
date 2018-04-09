@@ -73,23 +73,16 @@ namespace Gioco
                     }
                 }
             }
-            Console.WriteLine("Controllo di questa estrazione finito");
         }
 
         public int CountZero (int riga)
         {
             int counter = 0;
-            for (int i = 0; i < cartella.GetLength(0); i++)
+            for (int i = 0; i < cartella.GetLength(1); i++)
             {
-                if (i == riga)
+                if (cartella[riga, i] == 0)
                 {
-                    for (int j = 0; j < cartella.GetLength(1); j++)
-                    {
-                        if (cartella[i, j] == 0)
-                        {
-                            counter++;
-                        }
-                    }
+                    counter++;
                 }
             }
 

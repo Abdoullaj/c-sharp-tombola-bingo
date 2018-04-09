@@ -8,15 +8,13 @@ namespace Gioco
 {
     abstract class GameFactory
     {
-        private EstrazioneNumeroRandom est = new EstrazioneNumeroRandom();
-        string state;
+        
         private List<int> nEstratti;
         private List<Persona> giocatori;
-        private string[] stepStates;
+
 
         public GameFactory()
         {
-            state = "";
             nEstratti = new List<int>();
             giocatori = new List<Persona>();
         }
@@ -41,16 +39,6 @@ namespace Gioco
             giocatori.Add(p);
         }
 
-        public string GetState()
-        {
-            return state;
-        }
-
-        public EstrazioneNumeroRandom GetRandomGenerator()
-        {
-            return est;
-        }
-
         abstract public void TurnoGioco();
 
         public void AggiungiGiocatori(Persona p)
@@ -58,7 +46,6 @@ namespace Gioco
             giocatori.Add(p);
         }
 
-        public abstract void CreaStati();
 
     }
        

@@ -21,6 +21,7 @@ namespace Gioco
             } else
             {
                 GameFactory g = new Bingo();
+                g.TurnoGioco();
             }
 
             Console.ReadKey();

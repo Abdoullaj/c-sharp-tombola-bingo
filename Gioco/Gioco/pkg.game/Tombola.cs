@@ -7,14 +7,15 @@ namespace Gioco
 {
     class Tombola : GameFactory
     {
+        private EstrazioneNumeroRandom est = new EstrazioneNumeroRandom();
         private Boolean end;
         private string state;
-        private string[] states;
+        private static readonly string[] STATES = new string[] { "", "", "ambo", "terna", "quaterna", "cinquina" };
+
         public Tombola():base()
         {
             end = false;
-            state = base.GetState();
-            CreaStati();
+            state = "";
             Console.WriteLine("Nuova Tombola");
             CreazioneTombola();
         }
@@ -45,11 +46,6 @@ namespace Gioco
         }
 
 
-        public override void CreaStati()
-        {
-            states = new string[] {"","","ambo", "terna", "quaterna", "cinquina"};
-        }
-
         public override void TurnoGioco()
         {
             while (!end)
@@ -60,7 +56,7 @@ namespace Gioco
                     break;
                 }
 
-                int numeroEstratto = base.GetRandomGenerator().Estrazione();
+                int numeroEstratto = est.Estrazione();
                 base.AddToNumeriEstratti(numeroEstratto);
                 Console.WriteLine($"{numeroEstratto}");
                 for (int indexPersone = 0; indexPersone < base.GetPersone().Count; indexPersone++)
@@ -86,8 +82,7 @@ namespace Gioco
                 {
                     if (cartella.CountZero(i) > 1)
                     {
-                        SetState(cartella.CountZero(i), p);
-                        cartella.PrintSchema();
+                        SetState(cartella.CountZero(i), p, cartella);
                         break;
                     }
 
@@ -101,14 +96,15 @@ namespace Gioco
         }
 
 
-        private void SetState(int counter,Persona p)
+        private void SetState(int counter,Persona p, Cartella c)
         {
-            string newState = states[counter];
+            string newState = STATES[counter];
             
             if (!state.Contains(newState))
             {
                 state += newState;
                 Console.WriteLine($"{p.GetUser()} ha fatto {newState}");
+                c.PrintSchema();
             }
         }
 
