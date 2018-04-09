@@ -58,5 +58,34 @@ namespace Gioco
         {
             return cartella;
         }
+
+        public void CheckNumero(int n)
+        {
+            for (int riga = 0; riga < cartella.Length; riga++)
+            {
+                for (int colonna = 0; colonna < cartella.GetLength(riga); colonna++)
+                {
+                    if (cartella[riga, colonna] == n)
+                    {
+                        cartella[riga, colonna] = 0;
+                    }
+                }
+            }
+        }
+
+        public Boolean CartellaFinita()
+        {
+            for (int riga = 0; riga < cartella.Length; riga++)
+            {
+                for (int colonna = 0; colonna < cartella.GetLength(riga); colonna++)
+                {
+                    if (cartella[riga, colonna] != 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

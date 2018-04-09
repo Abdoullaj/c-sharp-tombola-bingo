@@ -10,8 +10,9 @@ namespace Gioco
     {
         private EstrazioneNumeroRandom est = new EstrazioneNumeroRandom();
         string state;
-        private List <int>nEstratti;
+        private List<int> nEstratti;
         private List<Persona> giocatori;
+        private string[] stepStates;
 
         public GameFactory()
         {
@@ -19,17 +20,12 @@ namespace Gioco
             giocatori = new List<Persona>();
         }
 
-        public void EstraiNumeri()
-        {
-           
-        }
-
-        public List <Persona> GetPersone()
+        public List<Persona> GetPersone()
         {
             return giocatori;
         }
 
-        public List <int> GetNEstratti()
+        public List<int> GetNEstratti()
         {
             return nEstratti;
         }
@@ -51,5 +47,8 @@ namespace Gioco
             giocatori.Add(p);
         }
 
+        public abstract void CreaStati();
+
     }
+       
 }
