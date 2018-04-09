@@ -54,7 +54,7 @@ namespace Gioco
             return costo;
         }
         
-        public int [,] GetCartella()
+        public int [,] GetMatrice()
         {
             return cartella;
         }

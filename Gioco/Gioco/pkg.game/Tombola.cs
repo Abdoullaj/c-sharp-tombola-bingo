@@ -31,6 +31,7 @@ namespace Gioco
                             for(int colonna = 0; colonna < cartella.GetMatrice().GetLength(riga); colonna++)
                             {
 
+
                             }
                         }
                     }

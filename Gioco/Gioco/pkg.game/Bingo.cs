@@ -6,12 +6,12 @@ namespace Gioco
 {
     class Bingo : GameFactory
     {
-        public Bingo()
+        public Bingo() : base()
         {
             Console.Write("Bingo creato");
         }
 
-        public override void turnoGioco() {
+        public override void TurnoGioco() {
             Console.Write("Turno bingo");
         }
     }
