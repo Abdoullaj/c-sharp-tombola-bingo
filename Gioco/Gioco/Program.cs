@@ -6,8 +6,7 @@ namespace Gioco
     {
         static void Main(string[] args)
         {
-            Persona pippo = new Persona("pippo");
-            
+            Competizione c = new Competizione();
         }
     }
 }

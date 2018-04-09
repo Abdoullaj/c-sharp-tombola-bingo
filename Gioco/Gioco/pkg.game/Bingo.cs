@@ -11,6 +11,11 @@ namespace Gioco
             Console.Write("Bingo creato");
         }
 
+        public override void CreaStati()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void TurnoGioco() {
             Console.Write("Turno bingo");
         }

@@ -14,9 +14,36 @@ namespace Gioco
         {
             end = false;
             state = base.GetState();
+            CreaStati();
             Console.WriteLine("Nuova Tombola");
-            Console.ReadKey();
+            CreazioneTombola();
         }
+
+        private void CreazioneTombola()
+        {
+            Console.WriteLine("Quanti giocatori?");
+            int nGiocatori = int.Parse(Console.ReadLine());
+            for(int i = 0; i<nGiocatori; i++)
+            {
+
+                Console.WriteLine("User giocatore");
+                string user = Console.ReadLine();
+
+                Console.WriteLine("Quante cartelle vuole comprare?");
+                int nCartelle= int.Parse(Console.ReadLine());
+
+                Persona p = new Persona(user);
+                for (int j = 0; j < nCartelle; j++)
+                {
+                    p.CompraCartella('t');
+                }
+
+                base.AddToGiocatori(p);
+            }
+            Console.WriteLine("Iscrizione completata");
+            Console.WriteLine($"N giocatori: {base.GetPersone().Count}");
+        }
+
 
         public override void CreaStati()
         {
@@ -34,10 +61,12 @@ namespace Gioco
                 }
 
                 int numeroEstratto = base.GetRandomGenerator().Estrazione();
-                for(int indexPersone = 0; indexPersone < base.GetPersone().Count; indexPersone++)
+                base.AddToNumeriEstratti(numeroEstratto);
+                Console.WriteLine($"{numeroEstratto}");
+                for (int indexPersone = 0; indexPersone < base.GetPersone().Count; indexPersone++)
                 {
                     Persona p = base.GetPersone()[indexPersone];
-                    Check(p,numeroEstratto);
+                    Check(p, numeroEstratto);
                 }
 
             }
@@ -49,36 +78,46 @@ namespace Gioco
         {
             for (int indiceCartelle = 0; indiceCartelle < p.GetCartelle().Count; indiceCartelle++)
             {
+                Console.WriteLine($"Dentro la cartella n {indiceCartelle} di {p.GetUser()}");
                 Cartella cartella = p.GetCartelle()[indiceCartelle];
-                for (int riga = 0; riga < cartella.GetMatrice().Length; riga++)
+                cartella.CheckNumero(n);
+
+                for (int i = 0; i < cartella.GetMatrice().GetLength(0); i++)
                 {
-                    int counter = 0;
-                    for (int colonna = 0; colonna < cartella.GetMatrice().GetLength(riga); colonna++)
+                    if (cartella.CountZero(i) > 1)
                     {
-                        cartella.CheckNumero(n);
-                        if (cartella.GetMatrice()[riga, colonna] == 0)
-                        {
-                            counter++;
-                            SetState(states[counter],p);
-                        }
-                        
+                        SetState(cartella.CountZero(i), p);
+                        cartella.PrintSchema();
+                        break;
                     }
+
                 }
                 if (cartella.CartellaFinita())
                 {
-                    SetState("tombola", p);
+                    SetEnd(p);
                     break;
                 }
             }
         }
 
 
-        private void SetState(string newState,Persona p)
+        private void SetState(int counter,Persona p)
         {
+            string newState = states[counter];
+            
             if (!state.Contains(newState))
             {
                 state += newState;
                 Console.WriteLine($"{p.GetUser()} ha fatto {newState}");
+            }
+        }
+
+        private void SetEnd(Persona p)
+        {
+            if (!state.Contains("tombola"))
+            {
+                state += "tombola";
+                Console.WriteLine($"{p.GetUser()} ha fatto tombola!");
             }
         }
     }

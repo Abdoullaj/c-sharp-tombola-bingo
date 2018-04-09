@@ -16,6 +16,7 @@ namespace Gioco
 
         public GameFactory()
         {
+            state = "";
             nEstratti = new List<int>();
             giocatori = new List<Persona>();
         }
@@ -28,6 +29,16 @@ namespace Gioco
         public List<int> GetNEstratti()
         {
             return nEstratti;
+        }
+
+        public void AddToNumeriEstratti(int n)
+        {
+            nEstratti.Add(n);
+        }
+
+        public void AddToGiocatori(Persona p)
+        {
+            giocatori.Add(p);
         }
 
         public string GetState()

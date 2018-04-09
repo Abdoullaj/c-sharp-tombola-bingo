@@ -6,7 +6,7 @@ namespace Gioco
 {
     class Competizione
     {
-        char type;
+       char type;
        public Competizione()
         {
             Console.WriteLine("tipo gioco");
@@ -17,10 +17,13 @@ namespace Gioco
             } else if ( type == 't' )
             {
                 GameFactory g = new Tombola();
+                g.TurnoGioco();
             } else
             {
                 GameFactory g = new Bingo();
             }
+
+            Console.ReadKey();
             
 
         }
